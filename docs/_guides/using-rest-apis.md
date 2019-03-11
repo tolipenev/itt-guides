@@ -33,11 +33,12 @@ $ curl https://gitlab.com/api/v4/users/moozer/projects
 
 The API includes all kinds of requests to everything (?) that is available on the website also. I usually fetch files and issues.
 
-### Pagination
+## Pagination
 
 A given request will not return thousands of records - default for gitlab is 20 for issues. You can request other "pages" than the first.
 
 Fetch list of projects, limit to 2 entries per page and show page 2.
+
 ```
 $ curl https://gitlab.com/api/v4/users/moozer/projects\?per_page\=2\&page\=2
 ```
@@ -51,6 +52,7 @@ Note that I use `jq` to make the output shorter and more to the point. The progr
 The one used in the example is `JCvGpfoqLBT5or7qKSBy` (and is deleted before this guide is published).
 
 Without authentication
+
 ```
 $ curl -s 'https://gitlab.com/api/v4/users/1207689/projects' | jq '.[].name'
 "kvm-speedtest"
@@ -63,6 +65,7 @@ $ curl -s 'https://gitlab.com/api/v4/users/1207689/projects' | jq '.[].name'
 ```
 
 With authentication, the list is longer including private repos.
+
 ```
 $  curl -s 'https://gitlab.com/api/v4/users/1207689/projects?private_token=JCvGpfoqLBT5or7qKSBy' | jq '.[].name'
 "kvm-speedtest"
@@ -79,7 +82,6 @@ $  curl -s 'https://gitlab.com/api/v4/users/1207689/projects?private_token=JCvGp
 "minimal-ci"
 "ProjectNetworkWeek48-49"
 ```
-
 
 # Using python
 
